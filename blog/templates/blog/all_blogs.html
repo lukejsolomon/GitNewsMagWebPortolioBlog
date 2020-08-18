@@ -1,0 +1,37 @@
+{% extends 'specials/bootStrapTmplt.html' %}
+{% block content %}
+
+<head>
+    <style>
+        img {
+            float: right;
+            /* margin-right: 100px; */
+
+        }
+
+        /* #txt {
+            margin-left: 100px;
+        } */
+    </style>
+</head>
+
+{% for blog in blogs %}
+<div class="col-lg-12 col-md-8">
+    <a href="{% url 'blog:detail' blog.id %}">
+        <img src="{{ blog.summaryImage.url }}" height=200 width=350>
+
+
+        <h2 id="txt">{{ blog.title }}</h2>
+
+
+    </a>
+    <br>
+    <h4 id="txt">{{ blog.date|date:'M d y' }}</h4>
+    <br>
+    <p id="txt">{{ blog.summary|truncatechars:190 }}</p>
+    <br>
+    <hr>
+</div>
+{% endfor %}
+
+{% endblock %}
